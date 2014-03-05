@@ -4,25 +4,24 @@ require 'active_support/core_ext'
 module GrapeBootstrap
   module Commands
     class Generate < Base
+      alias_method :model, :render_template
+      alias_method :api, :render_template
+
       def initialize path, type, options=[]
         super path, options
         if type.nil?
           throw "Type not specified"
         end
         @type = type
+        @name = options.shift
 
-        self.send type.downcase, options.shift
-      end
-
-      def model name
-        if name.nil?
-          throw "Model needs a name to be generated"
+        if @name.nil?
+          throw "#{@type} needs a name to be generated"
         end
 
-        render_template name
+        self.send @type.downcase, @name
       end
 
-      private
       def render_template name
         template_type = @type
         erb_binding = -> {
