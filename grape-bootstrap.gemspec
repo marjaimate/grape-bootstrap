@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
 
   gem.files         = [
     Dir.glob("lib/**/*.rb"),
+    Dir.glob("lib/**/*.erb"),
     Dir.glob("bin/*"),
     ['grape-bootstrap.gemspec']
   ].inject(:+)
