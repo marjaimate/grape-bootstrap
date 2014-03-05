@@ -1,14 +1,12 @@
+require 'grape_bootstrap/commands/base'
 require 'fileutils'
 require 'erb'
 
 module GrapeBootstrap
   module Commands
-    class AppInit
+    class AppInit < Base
       def initialize path, options=[]
-        if path.nil?
-          throw "Path not specified"
-        end
-        @path = path
+        super path, options
         @dry = (options & ["--dry"]).length > 0
 
         setup_dirs
@@ -64,8 +62,6 @@ module GrapeBootstrap
                     "#{File.dirname(__FILE__)}/../templates/#{template_name}.erb"
                   )
                 )
-
-          file_path = @path
 
           File.open("#{@path}/#{template_name}", 'w') do |file|
             file << tpl.result(erb_binding.call)

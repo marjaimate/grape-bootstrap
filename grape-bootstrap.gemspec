@@ -24,4 +24,5 @@ Gem::Specification.new do |gem|
   # Declare the gem dependecies
   gem.add_dependency('grape', '~> 0')
   gem.add_dependency('rake', '~> 0')
+  gem.add_dependency('activesupport', '~> 3.0')
 end
