@@ -31,3 +31,11 @@ application.rb
 config.ru
 environment.rb
 ```
+
+# Contribute
+
+* Fork
+* Branch off
+* Commit & Push
+* Pull
+
